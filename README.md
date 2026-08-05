@@ -7,3 +7,6 @@ Summary of Pract1:
                       4.Merge Sort
                       5.Quick Sort
                 My faculty helped me out the errors throught the practicals ,Sorting the numbers depends on the following factors as Data set size,Memory usage,Data                           order & Performance requirements.
+Conclusion:    
+           Learning of Sorting Algorithms.
+
