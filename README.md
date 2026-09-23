@@ -35,8 +35,11 @@ Conclusion:
  # Pract3-DAA
 
 SUMMARY OF PRACTICAL 3: 
+
 In practica 3 we learn about heap sort In that we learn about MAX and MIN heap sort also HEAP SORT:Heap sort is a sorting algorithm that uses a heap data structure to arrange elements in ascending or descending order. MAX HEAP:A Max Heap is a complete binary tree where the parent node is greater than or equal to its children. MIN HEAP:A Min Heap is a complete binary tree where the parent node is smaller than or equal to its children. Ascending order use a Max Heap. Descending order use a Min Heap.
+
 CONCLUSION:
+
 Heap sorting is a simple and efficient sorting method that uses a heap data structure. It arranges the elements in the required order by repeatedly selecting the largest or smallest element. Max Heap is used for ascending order, and Min Heap is used for descending order.
 
 
@@ -61,6 +64,35 @@ CONCULSION:
 Dynamic Programming makes the Coin Change Problem easier and faster to solve. 
 The program gives the minimum number of coins or returns -1 if the amount cannot be made.
 
+# PRACT-5(DAA)
+SUMMARY :
+
+The 0/1 Knapsack problem uses dynamic programming to find the maximum value that can be placed in a knapsack without exceeding its capacity. The program accepts the number of items, weights, values, and capacity from the user and calculates the maximum possible value. Its time complexity is O(n × W), space complexity is O(n × W), and the actual execution time is measured using time.perf_counter().
+
+CONCLUSION:
+
+The 0/1 Knapsack problem is efficiently solved using dynamic programming to maximize the total value within the given capacity. The program accepts user input and calculates the optimal solution while measuring its execution time. The algorithm has a time complexity of O(n × W), making it suitable for solving moderate-sized knapsack problems.
+
+
+# PRACT-6(DAA)
+
+SUMMARY :
+
+Chain Matrix Multiplication using Dynamic Programming finds the optimal order of multiplying matrices to minimize the total number of scalar multiplications. The algorithm stores intermediate results in a dynamic programming table and efficiently determines the minimum multiplication cost. It has a time complexity of O(n³) and a space complexity of O(n²), with execution time measured using Python’s time.perf_counter().
+
+CONCLUSION:
+
+Chain Matrix Multiplication using Dynamic Programming efficiently finds the best order of matrix multiplication with minimum computation cost. It reduces unnecessary calculations by storing previously solved subproblems. The method is efficient, systematic, and has a time complexity of O(n³).
+
+# PRACTICAL -8
+
+SUMMARY :
+
+Graph traversal is an important technique used to visit all the vertices of a graph systematically. DFS explores a graph deeply by visiting a vertex and then recursively visiting its unvisited neighbors. BFS explores the graph level by level using a queue data structure. Both DFS and BFS have a time complexity of O(V + E), where V is the number of vertices and E is the number of edges. These searching techniques are widely used in path finding, network analysis, and many other computer science applications.
+
+CONCLUSION :
+
+The graph traversal program successfully implements both DFS and BFS searching techniques using Python. DFS uses a depth-based approach, while BFS visits vertices level by level. Both methods efficiently traverse the vertices and edges of a graph. The program accepts user input, making it flexible for different graph structures and starting vertices. Thus, DFS and BFS are useful and fundamental techniques for solving various graph-based problems.
 
 
 
