@@ -94,7 +94,369 @@ CONCLUSION :
 
 The graph traversal program successfully implements both DFS and BFS searching techniques using Python. DFS uses a depth-based approach, while BFS visits vertices level by level. Both methods efficiently traverse the vertices and edges of a graph. The program accepts user input, making it flexible for different graph structures and starting vertices. Thus, DFS and BFS are useful and fundamental techniques for solving various graph-based problems.
 
+# Practical 9: Prim's Algorithm (Greedy Minimum Spanning Tree)
+
+This directory contains the Python implementation of **Prim's Algorithm** for finding the **Minimum Spanning Tree (MST)** of a connected, undirected, edge-weighted graph using a **Min-Heap (Priority Queue)**.
+
+---
+
+## 📌 Problem Overview & Paradigm
+
+Given a connected, undirected graph $G = (V, E)$ with non-negative edge weights, a **Minimum Spanning Tree (MST)** is a subset of edges that connects all $V$ vertices without any cycles while minimizing the total edge weight.
+
+### Method Implemented
+
+- **Prim's Algorithm (`prims_mst(graph, start_vertex)`)**
+  - Starts at an arbitrary seed vertex $s$ and grows the MST incrementally.
+  - At each step, greedily selects the minimum weight edge $(u, v)$ connecting a vertex $u$ in the tree to a vertex $v$ outside the tree.
+  - **Greedy Choice Property:** A locally optimal choice of the minimum cut edge yields a globally optimal MST.
+  - **Time Complexity:** $\mathcal{O}(E \log V)$ using Min-Heap priority queue.
+  - **Space Complexity:** $\mathcal{O}(V + E)$ for adjacency list and heap storage.
+
+---
+
+## ⚡ Complexity Summary
+
+| Approach | Best Case | Average Case | Worst Case | Auxiliary Space | Paradigm | Guarantees Optimality? |
+| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
+| **Prim's (Min-Heap)** | $\mathcal{O}(E \log V)$ | $\mathcal{O}(E \log V)$ | $\mathcal{O}(E \log V)$ | $\mathcal{O}(V + E)$ | Greedy Paradigm | ✅ Yes (Always Optimal) |
+
+---
+
+## 💻 How to Run
+
+1. Open your terminal or command prompt.
+2. Navigate to the `practical_9` directory:
+   ```bash
+   cd practical_9
+   ```
+3. Execute the Python script:
+   ```bash
+   python prims_algorithm.py
+   ```
+
+---
+
+## 📋 Sample Output
+
+```text
+==================================================
+        PRIM'S MINIMUM SPANNING TREE (MST)         
+==================================================
+Default Graph Adjacency List:
+  Node 0 -> Node 1 (weight 2), Node 3 (weight 3)
+  Node 1 -> Node 0 (weight 2), Node 2 (weight 3), Node 4 (weight 8)
+  Node 2 -> Node 1 (weight 3), Node 3 (weight 7), Node 4 (weight 6)
+  Node 3 -> Node 0 (weight 3), Node 2 (weight 7), Node 4 (weight 1)
+  Node 4 -> Node 1 (weight 8), Node 2 (weight 6), Node 3 (weight 1)
+
+Use custom input? (y/N): n
+
+--- Running Prim's Algorithm ---
+
+========== MINIMUM SPANNING TREE EDGES ==========
+Step   | Edge (u -> v)   | Weight    
+--------------------------------------
+1      | 0 -- 1          | 2         
+2      | 1 -- 2          | 3         
+3      | 0 -- 3          | 3         
+4      | 3 -- 4          | 1         
+--------------------------------------
+
+========== RESULTS SUMMARY ==========
+Total Vertices (V)    : 5
+MST Edge Count        : 4
+Total MST Weight      : 9
+Execution Time        : 14200.00 ns
+======================================
+```
+
+---
+
+## 📖 Key Takeaways & Conclusion
+
+1. **Greedy Spanning Tree Construction**:
+   - Prim's algorithm operates on vertices, making it ideal for dense graphs ($E \approx V^2$).
+2. **Min-Heap Efficiency**:
+   - Using `heapq` reduces edge extraction cost from $\mathcal{O}(V)$ to $\mathcal{O}(\log V)$, enabling fast scale to large graphs.
 
 
+# Practical 10: Kruskal's Algorithm (Greedy Minimum Spanning Tree)
 
+This directory contains the Python implementation of **Kruskal's Algorithm** for finding the **Minimum Spanning Tree (MST)** of a connected, undirected, edge-weighted graph using **Disjoint Set Union (DSU)** with **Path Compression** and **Union by Rank**.
 
+---
+
+## 📌 Problem Overview & Paradigm
+
+Given a connected graph $G = (V, E)$, Kruskal's algorithm constructs a Minimum Spanning Tree by sorting all graph edges in non-decreasing order of weight and greedily adding edges that do not form a cycle.
+
+### Method Implemented
+
+- **Kruskal's Algorithm with DSU (`kruskals_mst(num_vertices, edges)`)**
+  - Sorts all edges in non-decreasing order: $\mathcal{O}(E \log E)$.
+  - Uses Disjoint Set Union (DSU) to test if adding an edge forms a cycle:
+    - **`find(u)`:** Path compression flattens tree height to nearly $\mathcal{O}(1)$.
+    - **`union(u, v)`:** Union by rank attaches smaller tree under root of larger tree.
+  - **Time Complexity:** $\mathcal{O}(E \log E)$ or $\mathcal{O}(E \log V)$.
+  - **Space Complexity:** $\mathcal{O}(V + E)$ for DSU parent/rank arrays and edge lists.
+
+---
+
+## ⚡ Complexity Summary
+
+| Approach | Best Case | Average Case | Worst Case | Auxiliary Space | Paradigm | Guarantees Optimality? |
+| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
+| **Kruskal's (DSU)** | $\mathcal{O}(E \log E)$ | $\mathcal{O}(E \log E)$ | $\mathcal{O}(E \log E)$ | $\mathcal{O}(V + E)$ | Greedy Paradigm | ✅ Yes (Always Optimal) |
+
+---
+
+## 💻 How to Run
+
+1. Open your terminal or command prompt.
+2. Navigate to the `practical_10` directory:
+   ```bash
+   cd practical_10
+   ```
+3. Execute the Python script:
+   ```bash
+   python kruskals_algorithm.py
+   ```
+
+---
+
+## 📋 Sample Output
+
+```text
+==================================================
+      KRUSKAL'S MINIMUM SPANNING TREE (MST)       
+==================================================
+Default Graph Edges:
+  Edge (0 -- 1) with weight 4
+  Edge (0 -- 2) with weight 4
+  Edge (1 -- 2) with weight 2
+  Edge (1 -- 3) with weight 6
+  Edge (2 -- 3) with weight 8
+  Edge (2 -- 4) with weight 9
+  Edge (3 -- 4) with weight 7
+  Edge (3 -- 5) with weight 5
+  Edge (4 -- 5) with weight 10
+
+Use custom input? (y/N): n
+
+--- Running Kruskal's Algorithm ---
+
+========== SELECTED MST EDGES ==========
+Step   | Edge (u -- v)   | Weight    
+--------------------------------------
+1      | 1 -- 2          | 2         
+2      | 0 -- 1          | 4         
+3      | 3 -- 5          | 5         
+4      | 1 -- 3          | 6         
+5      | 3 -- 4          | 7         
+--------------------------------------
+
+========== RESULTS SUMMARY ==========
+Total Vertices (V)    : 6
+Total Graph Edges (E) : 9
+MST Edges Selected    : 5
+Edges Skipped (Cycles): 4
+Total MST Weight      : 24
+Execution Time        : 18100.00 ns
+======================================
+```
+
+---
+
+## 📖 Key Takeaways & Conclusion
+
+1. **Edge-Centric Greedy Strategy**:
+   - Unlike Prim's algorithm which grows a connected tree from a vertex, Kruskal's algorithm processes global edges and works exceptionally well on sparse graphs ($E \ll V^2$).
+2. **Nearly Constant DSU Operations**:
+   - With path compression and union by rank, DSU operations run in $\mathcal{O}(\alpha(V))$ time per operation (where $\alpha$ is the Inverse Ackermann function, effectively $\le 4$).
+     # Practical 11: Floyd-Warshall Algorithm (All-Pairs Shortest Path)
+
+This directory contains the Python implementation of the **Floyd-Warshall Algorithm** for finding **All-Pairs Shortest Paths** in a directed, weighted graph using **Dynamic Programming**.
+
+---
+
+## 📌 Problem Overview & Paradigm
+
+Given a directed weighted graph $G = (V, E)$ represented as an adjacency matrix, compute the shortest path distances between every pair of vertices $i, j \in V$.
+
+### Method Implemented
+
+- **Floyd-Warshall Tabulation (`floyd_warshall(graph)`)**
+  - Maintains a 2D distance matrix $dist[i][j]$ and a predecessor matrix $next\_node[i][j]$.
+  - Iterates through all possible intermediate vertices $k \in \{0, 1, \dots, V-1\}$ and updates paths:
+  - **Recurrence Relation:**
+    $$D^{(k)}[i][j] = \min\left(D^{(k-1)}[i][j], \; D^{(k-1)}[i][k] + D^{(k-1)}[k][j]\right)$$
+  - **Time Complexity:** $\mathcal{O}(V^3)$ (three nested loops over vertices).
+  - **Space Complexity:** $\mathcal{O}(V^2)$ for intermediate matrices.
+
+---
+
+## ⚡ Complexity Summary
+
+| Approach | Best Case | Average Case | Worst Case | Auxiliary Space | Paradigm | Guarantees Optimality? |
+| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
+| **Floyd-Warshall (DP)** | $\mathcal{O}(V^3)$ | $\mathcal{O}(V^3)$ | $\mathcal{O}(V^3)$ | $\mathcal{O}(V^2)$ | Dynamic Programming | ✅ Yes (Detects negative cycles) |
+
+---
+
+## 💻 How to Run
+
+1. Open your terminal or command prompt.
+2. Navigate to the `practical_11` directory:
+   ```bash
+   cd practical_11
+   ```
+3. Execute the Python script:
+   ```bash
+   python floyd_warshall.py
+   ```
+
+---
+
+## 📋 Sample Output
+
+```text
+==================================================
+      FLOYD-WARSHALL ALL-PAIRS SHORTEST PATH      
+==================================================
+Default Graph Adjacency Weight Matrix:
+
+========== ALL-PAIRS SHORTEST DISTANCE MATRIX ==========
+From\To Node    0   Node    1   Node    2   Node    3
+-----------------------------------------------------
+Node 0          0          3        INF          7
+Node 1          8          0          2        INF
+Node 2          5        INF          0          1
+Node 3          2        INF        INF          0
+-----------------------------------------------------
+
+Use custom input? (y/N): n
+
+--- Running Floyd-Warshall Dynamic Programming Solver ---
+
+========== ALL-PAIRS SHORTEST DISTANCE MATRIX ==========
+From\To Node    0   Node    1   Node    2   Node    3
+-----------------------------------------------------
+Node 0          0          3          5          6
+Node 1          5          0          2          3
+Node 2          3          6          0          1
+Node 3          2          5          7          0
+-----------------------------------------------------
+
+========== SAMPLE PATH RECONSTRUCTIONS ==========
+Source   -> Target   | Cost   | Path                
+------------------------------------------------
+Node 0   -> Node 1   | 3      | 0 -> 1              
+Node 0   -> Node 2   | 5      | 0 -> 1 -> 2         
+Node 0   -> Node 3   | 6      | 0 -> 1 -> 2 -> 3    
+...
+
+========== RESULTS SUMMARY ==========
+Total Vertices (V)    : 4
+Execution Time        : 19800.00 ns
+======================================
+```
+
+---
+
+## 📖 Key Takeaways & Conclusion
+
+1. **All-Pairs Distance Matrix**:
+   - Unlike Dijkstra's or Bellman-Ford algorithms which compute single-source shortest paths, Floyd-Warshall computes shortest paths between all pairs of nodes simultaneously in $\mathcal{O}(V^3)$ time.
+2. **Dense Graph Suitability**:
+   - Highly effective for dense graphs ($E \approx V^2$) where running Dijkstra $V$ times would take $\mathcal{O}(V E \log V) \approx \mathcal{O}(V^3 \log V)$.
+
+# Practical 12: Travelling Salesman Problem (Dynamic Programming - Held-Karp Algorithm)
+
+This directory contains the Python implementation of the **Travelling Salesman Problem (TSP)** solved using the **Held-Karp Dynamic Programming algorithm** with **Bitmask State Representation**, alongside a comparison against the naive **Brute-Force Permutation** method.
+
+---
+
+## 📌 Problem Overview & Paradigm
+
+Given a set of $N$ cities and pairwise distances $d(i, j)$ between them, find the minimum cost tour that starts at a designated origin city (e.g., City 0), visits every other city exactly once, and returns to the origin city.
+
+### Methods Implemented
+
+1. **Held-Karp Dynamic Programming (`tsp_held_karp(matrix)`)**
+   - Uses bitmasks to represent subsets of visited cities. State is defined as $(S, u)$, representing the minimum cost to complete the tour starting at city $u$ having visited city subset $S$.
+   - **Recurrence Relation:**
+     $$g(S, u) = \min_{v \notin S} \left( d(u, v) + g(S \cup \{v\}, v) \right)$$
+   - **Base Case:** $g(\text{All Cities}, u) = d(u, 0)$ (return cost to start city 0).
+   - **Time Complexity:** $\mathcal{O}(N^2 \cdot 2^N)$
+   - **Space Complexity:** $\mathcal{O}(N \cdot 2^N)$
+
+2. **Brute-Force Permutations (`tsp_brute_force(matrix)`)**
+   - Generates all $(N-1)!$ possible tour permutations.
+   - **Time Complexity:** $\mathcal{O}(N!)$
+   - **Space Complexity:** $\mathcal{O}(N)$
+
+---
+
+## ⚡ Complexity Summary
+
+| Approach | Best Case | Average Case | Worst Case | Auxiliary Space | Paradigm | Guarantees Optimality? |
+| :--- | :---: | :---: | :---: | :---: | :--- | :---: |
+| **Held-Karp DP** | $\mathcal{O}(N^2 \cdot 2^N)$ | $\mathcal{O}(N^2 \cdot 2^N)$ | $\mathcal{O}(N^2 \cdot 2^N)$ | $\mathcal{O}(N \cdot 2^N)$ | Dynamic Programming (Bitmask) | ✅ Yes (Always Optimal) |
+| **Brute-Force** | $\mathcal{O}(N!)$ | $\mathcal{O}(N!)$ | $\mathcal{O}(N!)$ | $\mathcal{O}(N)$ | Exhaustive Search | ✅ Yes (Always Optimal) |
+
+---
+
+## 💻 How to Run
+
+1. Open your terminal or command prompt.
+2. Navigate to the `practical_12` directory:
+   ```bash
+   cd practical_12
+   ```
+3. Execute the Python script:
+   ```bash
+   python travelling_salesman.py
+   ```
+
+---
+
+## 📋 Sample Output
+
+```text
+==================================================
+   TRAVELLING SALESMAN PROBLEM (HELD-KARP DP)    
+==================================================
+Default Distance Matrix (4 Cities):
+From\To     City 0    City 1    City 2    City 3
+--------------------------------------------------
+City 0           0        10        15        20
+City 1          10         0        35        25
+City 2          15        35         0        30
+City 3          20        25        30         0
+--------------------------------------------------
+
+Use custom input? (y/N): n
+
+--- Running Dynamic Programming (Held-Karp) Solver ---
+--- Running Brute-Force Permutation Solver ---
+
+========== OPTIMAL TOUR PATH ==========
+Tour Path : City 0 -> City 1 -> City 3 -> City 2 -> City 0
+
+========== RESULTS & METHOD COMPARISON ==========
+Method          | Min Tour Cost   | Execution Time (ns) 
+-------------------------------------------------------
+Held-Karp (DP)  | 80              | 36400.00            
+Brute-Force     | 80              | 28900.00            
+=======================================================
+```
+
+---
+
+## 📖 Key Takeaways & Conclusion
+
+1. **Exponential Optimization**:
+   - The Held-Karp DP algorithm reduces TSP complexity from factorial time $\mathcal{O}(N!)$ to exponential time $\mathcal{O}(N^2 2^N)$.
+2. **Practical Applicability**:
+   - Held-Karp makes exact TSP solutions feasible for up to $N \approx 20$ cities, whereas Brute-Force stalls for $N \ge 12$.
